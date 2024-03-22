@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
+import { Toaster } from 'react-hot-toast'
 
 import { ThemeProvider } from '@/components/theme-provider'
 import { Header } from '@/components/shared/header'
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           {children}
+          <Toaster position='bottom-right' />
         </ThemeProvider>
       </body>
     </html>
