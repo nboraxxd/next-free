@@ -2,7 +2,7 @@ import { cookies } from 'next/headers'
 
 import envConfig from '@/constants/config'
 
-export default async function Page() {
+export default async function Me() {
   const cookieStore = cookies()
   const sessionToken = cookieStore.get('session-token')
 

@@ -1,6 +1,7 @@
 'use client'
 
 import toast from 'react-hot-toast'
+import { useRouter } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
@@ -11,6 +12,8 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
 export default function LoginForm() {
+  const router = useRouter()
+
   const form = useForm<LoginSchemaType>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -38,7 +41,6 @@ export default function LoginForm() {
           throw data
         }
 
-        form.reset()
         return data
       })
 
@@ -59,6 +61,8 @@ export default function LoginForm() {
           throw data
         }
 
+        form.reset()
+        router.push('/')
         return data
       })
       console.log('🔥 ~ onSubmit ~ resultFromNextServer:', resultFromNextServer)
