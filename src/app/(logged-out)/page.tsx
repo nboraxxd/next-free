@@ -13,6 +13,14 @@ export default function Home() {
       <p>The best course to learn Next.js</p>
       <div className="flex items-center gap-2">
         <Button asChild>
+          <Link href="/me">Me</Link>
+        </Button>
+        <Button asChild>
+          <Link href="/profile">Profile</Link>
+        </Button>
+      </div>
+      <div className="flex items-center gap-2">
+        <Button asChild>
           <Link href="/login">Log in</Link>
         </Button>
         <small>or</small>
