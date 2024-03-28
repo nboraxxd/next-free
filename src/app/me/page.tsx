@@ -27,7 +27,5 @@ export default async function Me() {
     return data
   })
 
-  console.log(result)
-
   return <div>Xin chao {result.payload.data.name}</div>
 }

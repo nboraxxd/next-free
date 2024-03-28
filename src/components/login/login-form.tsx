@@ -6,11 +6,14 @@ import { useForm } from 'react-hook-form'
 
 import envConfig from '@/constants/config'
 import { LoginSchemaType, loginSchema } from '@/lib/validation'
+import { useAuth } from '@/components/provider/auth-provider'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
 export default function LoginForm() {
+  const { setSessionToken } = useAuth()
+
   const form = useForm<LoginSchemaType>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -62,6 +65,7 @@ export default function LoginForm() {
         return data
       })
       console.log('🔥 ~ onSubmit ~ resultFromNextServer:', resultFromNextServer)
+      setSessionToken(resultFromNextServer.payload.data.token)
     } catch (error: any) {
       const errors = error.payload?.errors as { field: string; message: string }[]
       const status = error.status
